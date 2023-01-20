@@ -1,4 +1,4 @@
-- - name: Set environment variable for easytravel-loadgen deployment config
+ - name: Set environment variable for easytravel-loadgen deployment config
   oc_env:
     state: present
     resource_name: easytravel-loadgen
