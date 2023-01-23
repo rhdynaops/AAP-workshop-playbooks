@@ -1,8 +1,6 @@
- - name: Set environment variable for easytravel-loadgen deployment config
-   oc_env:
-   state: present
-   resource_name: easytravel-loadgen
-   namespace: travel-apps
-    env:
-      - name: ET_PROBLEMS
-        value: LoginProblems
+---
+- name: Set environment variable for deployment config
+  hosts: localhost
+  tasks:
+  - name: Set environment variable
+    command: oc set env dc/easytravel-loadgen ET_PROBLEMS=LoginProblems -n travel-apps
