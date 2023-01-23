@@ -1,7 +1,7 @@
 ---
 - name: Login to OpenShift cluster
-  hosts: localhost
-  connection: local
+  hosts: bastion.f4zmk.sandbox2653.opentlc.com
+  connection: ssh
   tasks:
     - name: Login to OpenShift cluster
       command: oc login -u opentlc-mgr -p SlWBsd1OpQbvSJzS https://api.cluster-f4zmk.f4zmk.sandbox2653.opentlc.com:6443
