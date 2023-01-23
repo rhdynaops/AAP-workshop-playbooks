@@ -1,0 +1,9 @@
+---
+- name: Login to OpenShift cluster
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Login to OpenShift cluster
+      command: oc login -u <username> -p <password> <openshift_cluster_url>
+    - name: Set environment variable for deployment config
+      command: oc set env dc/easytravel-loadgen ET_PROBLEMS=LoginProblems -n travel-apps
