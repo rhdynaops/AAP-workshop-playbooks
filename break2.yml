@@ -1,6 +1,6 @@
 ---
 - name: Login to OpenShift cluster
-  hosts: bastion.f4zmk.sandbox2653.opentlc.com
+  hosts: all
   connection: ssh
   tasks:
     - name: Login to OpenShift cluster
