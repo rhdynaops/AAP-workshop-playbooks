@@ -1,0 +1,329 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: dynatrace-easytravel
+  labels:
+    name: dynatrace-easytravel
+objects:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: easytravel-mongodb
+    labels:
+      app: easytravel-mongodb
+      app.kubernetes.io/component: easytravel-mongodb
+      app.kubernetes.io/instance: easytravel-mongodb
+      app.kubernetes.io/name: easytravel-mongodb
+      app.kubernetes.io/part-of: dynatrace-easytravel
+      app.openshift.io/runtime: mongodb
+  spec:
+    replicas: 1
+    selector:
+      matchLabels:
+        app: easytravel-mongodb
+    template:
+      metadata:
+        labels:
+          app: easytravel-mongodb
+          deploymentconfig: easytravel-mongodb
+      spec:
+        containers:
+          - name: easytravel-mongodb
+            image: dynatrace/easytravel-mongodb
+            ports:
+              - containerPort: 27017
+                protocol: TCP
+              - containerPort: 28017
+                protocol: TCP
+            imagePullPolicy: IfNotPresent
+        restartPolicy: Always
+    strategy:
+      type: RollingUpdate
+      rollingUpdate:
+        maxUnavailable: 25%
+        maxSurge: 25%
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      app.openshift.io/connects-to: '[{"apiVersion":"apps/v1","kind":"Deployment","name":"easytravel-mongodb"}]'
+    name: easytravel-backend
+    labels:
+      app: easytravel-backend
+      app.kubernetes.io/component: easytravel-backend
+      app.kubernetes.io/instance: easytravel-backend
+      app.kubernetes.io/name: easytravel-backend
+      app.kubernetes.io/part-of: dynatrace-easytravel
+      app.openshift.io/runtime: java
+  spec:
+    strategy:
+      type: Rolling
+      rollingParams:
+        updatePeriodSeconds: 1
+        intervalSeconds: 1
+        timeoutSeconds: 600
+        maxUnavailable: 25%
+        maxSurge: 25%
+      resources: {}
+      activeDeadlineSeconds: 21600
+    triggers:
+      - type: ConfigChange
+    replicas: 1
+    selector:
+      app: easytravel-backend
+      deploymentconfig: easytravel-backend
+    template:
+      metadata:
+        labels:
+          app: easytravel-backend
+          deploymentconfig: easytravel-backend
+      spec:
+        containers:
+          - name: easytravel-backend
+            image: dynatrace/easytravel-backend
+            ports:
+              - containerPort: 8080
+                protocol: TCP
+            env:
+              - name: ET_DATABASE_LOCATION
+                value: 'easytravel-mongodb:27017'
+              - name: ET_MONGO_AUTH_DB
+                value: admin
+              - name: ET_DATABASE_USER
+                value: etAdmin
+              - name: ET_DATABASE_PASSWORD
+                value: adminadmin
+            resources: {}
+            imagePullPolicy: IfNotPresent
+        restartPolicy: Always
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      app.openshift.io/connects-to: >-
+        [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"easytravel-backend"}]
+    name: easytravel-frontend
+    labels:
+      app: easytravel-frontend
+      app.kubernetes.io/component: easytravel-frontend
+      app.kubernetes.io/instance: easytravel-frontend
+      app.kubernetes.io/name: easytravel-frontend
+      app.kubernetes.io/part-of: dynatrace-easytravel
+      app.openshift.io/runtime: java
+  spec:
+    strategy:
+      type: Rolling
+      rollingParams:
+        updatePeriodSeconds: 1
+        intervalSeconds: 1
+        timeoutSeconds: 600
+        maxUnavailable: 25%
+        maxSurge: 25%
+    triggers:
+      - type: ConfigChange
+    replicas: 1
+    selector:
+      app: easytravel-frontend
+      deploymentconfig: easytravel-frontend
+    template:
+      metadata:
+        labels:
+          app: easytravel-frontend
+          deploymentconfig: easytravel-frontend
+      spec:
+        containers:
+          - name: easytravel-frontend
+            image: dynatrace/easytravel-frontend
+            ports:
+              - containerPort: 8080
+                protocol: TCP
+            env:
+              - name: ET_BACKEND_URL
+                value: 'http://easytravel-backend:8080'
+            resources: {}
+            imagePullPolicy: IfNotPresent
+        restartPolicy: Always
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      app.openshift.io/connects-to: >-
+        [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"easytravel-frontend"}]
+    name: easytravel-www
+    labels:
+      app: easytravel-www
+      app.kubernetes.io/component: easytravel-www
+      app.kubernetes.io/instance: easytravel-www
+      app.kubernetes.io/name: easytravel-www
+      app.kubernetes.io/part-of: dynatrace-easytravel
+      app.openshift.io/runtime: nginx
+  spec:
+    strategy:
+      type: Rolling
+      rollingParams:
+        updatePeriodSeconds: 1
+        intervalSeconds: 1
+        timeoutSeconds: 600
+        maxUnavailable: 25%
+        maxSurge: 25%
+    triggers:
+      - type: ConfigChange
+    replicas: 1
+    selector:
+      app: easytravel-www
+      deploymentconfig: easytravel-www
+    template:
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: easytravel-www
+          deploymentconfig: easytravel-www
+      spec:
+        containers:
+          - name: easytravel-www
+            image: dynatrace/easytravel-nginx
+            ports:
+              - containerPort: 80
+                protocol: TCP
+              - containerPort: 8080
+                protocol: TCP
+              - containerPort: 9079
+                protocol: TCP
+            env:
+              - name: ET_FRONTEND_LOCATION
+                value: 'easytravel-frontend:8080'
+              - name: ET_BACKEND_LOCATION
+                value: 'easytravel-backend:8080'
+            resources: {}
+            imagePullPolicy: IfNotPresent
+        restartPolicy: Always
+- apiVersion: apps.openshift.io/v1
+  kind: DeploymentConfig
+  metadata:
+    annotations:
+      app.openshift.io/connects-to: >-
+        [{"apiVersion":"apps.openshift.io/v1","kind":"DeploymentConfig","name":"easytravel-www"}]
+    name: easytravel-loadgen
+    labels:
+      app: easytravel-loadgen
+      app.kubernetes.io/component: easytravel-loadgen
+      app.kubernetes.io/instance: easytravel-loadgen
+      app.kubernetes.io/name: easytravel-loadgen
+      app.kubernetes.io/part-of: dynatrace-easytravel
+      app.openshift.io/runtime: java
+  spec:
+    strategy:
+      type: Rolling
+      rollingParams:
+        updatePeriodSeconds: 1
+        intervalSeconds: 1
+        timeoutSeconds: 600
+        maxUnavailable: 25%
+        maxSurge: 25%
+    triggers:
+    - type: ConfigChange
+    replicas: 0
+    selector:
+      app: easytravel-loadgen
+      deploymentconfig: easytravel-loadgen
+    template:
+      metadata:
+        labels:
+          app: easytravel-loadgen
+          deploymentconfig: easytravel-loadgen
+      spec:
+        containers:
+          - name: easytravel-loadgen
+            image: dynatrace/easytravel-loadgen
+            ports:
+              - containerPort: 8080
+                protocol: TCP
+            env:
+              - name: ET_FRONTEND_URL
+                value: 'http://easytravel-www:80'
+              - name: ET_VISIT_NUMBER
+                value: '2'
+            resources: {}
+            imagePullPolicy: IfNotPresent
+        restartPolicy: Always
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: easytravel-mongodb
+    labels:
+      app: easytravel-mongodb
+  spec:
+    ports:
+    - name: 27017-tcp
+      port: 27017
+      protocol: TCP
+      targetPort: 27017
+    - name: 28017-tcp
+      port: 28017
+      protocol: TCP
+      targetPort: 28017
+    selector:
+      app: easytravel-mongodb
+    type: ClusterIP
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: easytravel-backend
+    labels:
+      app: easytravel-backend
+  spec:
+    ports:
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: easytravel-backend
+    type: ClusterIP
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: easytravel-frontend
+    labels:
+      app: easytravel-frontend
+  spec:
+    ports:
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: easytravel-frontend
+    type: ClusterIP
+- apiVersion: v1
+  kind: Service
+  metadata:
+    name: easytravel-www
+    labels:
+      app: easytravel-www
+  spec:
+    ports:
+    - name: 80-tcp
+      port: 80
+      protocol: TCP
+      targetPort: 80
+    - name: 8080-tcp
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      app: easytravel-www
+    type: ClusterIP
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    name: easytravel
+    labels:
+      app: easytravel-www
+  spec:
+    to:
+      kind: Service
+      name: easytravel-www
+    port:
+      targetPort: 80-tcp
+    wildcardPolicy: None
