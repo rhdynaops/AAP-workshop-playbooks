@@ -1,0 +1,14 @@
+---
+- hosts: openshift_cluster
+  tasks:
+    - name: Create a new project
+      command: oc new-project easytravel
+      become: true
+      
+    - name: Add cluster-admin role to a user
+      command: oc adm policy add-role-to-user cluster-admin {{ user }} -n easytravel
+      become: true
+
+    - name: Add anyuid SCC to the default service account
+      command: oc adm policy add-scc-to-user anyuid -z default -n easytravel
+      become: true
