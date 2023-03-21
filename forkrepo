@@ -1,0 +1,28 @@
+---
+- name: Fork GitHub repository
+  hosts: localhost
+  connection: local
+  gather_facts: no
+
+  vars:
+    github_api_token: "YOUR_GITHUB_API_TOKEN"
+    github_username: "YOUR_GITHUB_USERNAME"
+    repo_owner: "ORIGINAL_REPO_OWNER"
+    repo_name: "ORIGINAL_REPO_NAME"
+  
+  tasks:
+    - name: Fork repository
+      uri:
+        url: "https://api.github.com/repos/{{ repo_owner }}/{{ repo_name }}/forks"
+        method: POST
+        user: "{{ github_username }}"
+        password: "{{ github_api_token }}"
+        return_content: yes
+        body_format: json
+        headers:
+          Content-Type: "application/json"
+      register: result
+
+    - name: Print result
+      debug:
+        var: result.content
