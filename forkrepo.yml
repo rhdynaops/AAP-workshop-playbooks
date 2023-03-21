@@ -1,7 +1,7 @@
 ---
 - name: Fork GitHub repository
   hosts: localhost
-  connection: local
+  connection: ssh
   gather_facts: no
 
   vars:
