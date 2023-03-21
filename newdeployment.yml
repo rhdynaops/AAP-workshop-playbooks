@@ -1,0 +1,10 @@
+---
+- hosts: openshift_cluster
+  tasks:
+    - name: Create EasyTravel deployment
+      command: oc create -f templates/easytravel-deployment.yml
+      become: true
+      
+    - name: Create Dynatrace EasyTravel app
+      command: oc new-app dynatrace-easytravel
+      become: true
