@@ -5,15 +5,15 @@
   gather_facts: no
 
   vars:
-    github_api_token: "YOUR_GITHUB_API_TOKEN"
-    github_username: "YOUR_GITHUB_USERNAME"
-    repo_owner: "ORIGINAL_REPO_OWNER"
-    repo_name: "ORIGINAL_REPO_NAME"
+    github_api_token: "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"
+    github_username: "pmedilall"
+    repo_owner: "gvenkatx"
+    repo_name: "https://github.com/gvenkatx/easyTravel-OpenShift"
   
   tasks:
     - name: Fork repository
       uri:
-        url: "https://api.github.com/repos/{{ repo_owner }}/{{ repo_name }}/forks"
+        url: "https://api.github.com/repos/{{ pmedilall }}/{{ easytravesecure }}/forks"
         method: POST
         user: "{{ github_username }}"
         password: "{{ github_api_token }}"
