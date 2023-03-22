@@ -15,7 +15,7 @@
       uri:
         url: "https://api.github.com/repos/{{ pmedilall }}/{{ easytravesecure }}/forks"
         method: POST
-        user: "{{ pmedilall }}"
+        user: {{ pmedilall }}
         password: "{{ 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 }}"
         return_content: yes
         body_format: json
