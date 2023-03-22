@@ -1,6 +1,7 @@
 ---
 - name: Get pods in OpenShift cluster
-  hosts: localhost
+  hosts: all
+  connection: ssh 
   gather_facts: false
   tasks:
     - name: Login to OpenShift cluster
