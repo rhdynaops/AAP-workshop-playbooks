@@ -6,7 +6,7 @@
 
   vars:
     github_api_token: "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"
-    github_username: "pmedilall"
+#    github_username: "pmedilall"
     repo_owner: "gvenkatx"
     repo_name: "https://github.com/gvenkatx/easyTravel-OpenShift"
   
