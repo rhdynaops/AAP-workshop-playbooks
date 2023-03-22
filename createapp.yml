@@ -3,5 +3,5 @@
   connection: ssh
   tasks: 
     - name: Create Dynatrace EasyTravel app
-      command: oc new-app dynatrace-easytravel2
+      command: oc new-app dynatrace-easytravel
       become: true
