@@ -1,6 +1,6 @@
 ---
 - name: Fork GitHub repository
-  hosts: bastion.f5l6w.sandbox2952.opentlc.com
+  hosts: all
   connection: ssh
   gather_facts: no
 
