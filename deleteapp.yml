@@ -5,3 +5,8 @@
     - name: Delete App
       command: oc delete project easytravel
       become: true
+      
+    - name: Wait for 20 seconds
+      pause:
+      seconds: 20
+
