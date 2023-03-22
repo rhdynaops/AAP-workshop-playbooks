@@ -5,17 +5,17 @@
   gather_facts: no
 
   vars:
-    github_api_token: "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"
-    github_username: "pmedilall"
-    repo_owner: "gvenkatx"
-    repo_name: "https://github.com/gvenkatx/easyTravel-OpenShift"
+     github_api_token: "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"
+     github_username: "pmedilall"
+     repo_owner: "gvenkatx"
+     repo_name: "https://github.com/gvenkatx/easyTravel-OpenShift"
   
   tasks:
     - name: Fork repository
       uri:
         url: "https://api.github.com/repos/{{ pmedilall }}/{{ easytravesecure }}/forks"
         method: POST
-        github_username: "{{ pmedilall }}"
+        user: "{{ pmedilall }}"
         password: "{{ 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 }}"
         return_content: yes
         body_format: json
