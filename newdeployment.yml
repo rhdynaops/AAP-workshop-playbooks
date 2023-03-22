@@ -1,12 +1,13 @@
 ---
-- hosts: openshift_cluster
+- hosts: all
+  connection: ssh
   tasks:
     - name: Create EasyTravel deployment
-      command: oc create -f templates/easytravel-deployment.yml
+      command: oc create -f easytravel-deployment.yml
       become: true
       delay: 5
       sleep: 5
       
     - name: Create Dynatrace EasyTravel app
-      command: oc new-app dynatrace-easytravel
+      command: oc new-app dynatrace-easytravel2
       become: true
