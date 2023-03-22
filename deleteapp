@@ -1,0 +1,7 @@
+---
+- hosts: all
+  connection: ssh
+  tasks:
+    - name: Delete App
+      command: oc delete project easytravel
+      become: true
