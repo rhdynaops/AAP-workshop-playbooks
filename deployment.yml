@@ -3,7 +3,7 @@
   connection: ssh
   tasks:
     - name: Create EasyTravel deployment
-      command: oc create -f easytravel-deployment.yml
+      command: oc create -f easytravel-deployment1.yml
       become: true
            
 
