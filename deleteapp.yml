@@ -8,7 +8,7 @@
       
     - name: Wait for 20 seconds
       pause:
-        seconds: 20
+        seconds: 35
    
     - name: Get Pods
       command: oc get pods
