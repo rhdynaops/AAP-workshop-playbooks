@@ -1,0 +1,7 @@
+---
+- name: Add Syntethic Load
+  hosts: all
+  connection: ssh
+  tasks:
+    - name: Apply Syntethic load on www-eaytravel
+      command: oc scale dc easytravel-loadgen --replicas=1
