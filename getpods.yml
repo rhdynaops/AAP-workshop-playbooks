@@ -9,7 +9,7 @@
 
    - name: Get pods
      command: oc get pods
-      register: pods_output
+     register: pods_output
 
    - name: Display pods output
       debug:
