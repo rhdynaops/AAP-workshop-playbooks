@@ -4,9 +4,6 @@
   connection: ssh 
   tasks:
    
-   - name: Login to OpenShift cluster
-     command: oc login -u admin -p elelUx1T7XajD9EY https://api.cluster-qhbht.qhbht.sandbox39.opentlc.com:6443
-
    - name: Get pods
      command: oc get pods
      register: pods_output
