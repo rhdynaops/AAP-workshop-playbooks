@@ -3,9 +3,7 @@
   hosts: all
   connection: ssh 
   tasks:
-    - name: Login to OpenShift cluster
-      command: oc login -u opentlc-mgr -p r3dh4t1! https://api.cluster-f5l6w.f5l6w.sandbox2952.opentlc.com:6443
-
+   
     - name: Get pods
       command: oc get pods
       register: pods_output
