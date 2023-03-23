@@ -1,0 +1,7 @@
+---
+- name: Login to OpenShift cluster
+  hosts: all
+  connection: ssh
+  tasks:
+    - name: Set environment variable for deployment config
+      command: oc set env dc/easytravel-loadgen ET_PROBLEMS=LoginProblems -n travel-apps
