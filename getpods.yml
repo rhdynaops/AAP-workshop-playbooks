@@ -12,5 +12,5 @@
      register: pods_output
 
    - name: Display pods output
-      debug:
-        var: pods_output.stdout_lines
+     debug:
+       var: pods_output.stdout_lines
