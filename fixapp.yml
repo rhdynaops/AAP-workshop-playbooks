@@ -6,8 +6,8 @@
     - name: Login to OpenShift cluster
       command: oc login -u admin -p elelUx1T7XajD9EY https://api.cluster-qhbht.qhbht.sandbox39.opentlc.com:6443
     - name: Set environment variable for deployment config
-      command: oc set env dc/easytravel-loadgen ET_PROBLEMS- -n travel-apps
+      command: oc set env dc/easytravel-loadgen ET_PROBLEMS- -n easytravel
     - name: Roll out latest deployment for easytravel-backend
-      command: oc rollout latest dc/easytravel-backend -n travel-apps
+      command: oc rollout latest dc/easytravel-backend -n easytravel
     - name: Roll out latest deployment for easytravel-frontend
-      command: oc rollout latest dc/easytravel-frontend -n travel-apps
+      command: oc rollout latest dc/easytravel-frontend -n easytravel
