@@ -14,6 +14,6 @@
 
     - name: Notify Slack channel
       slack:
-      token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
-      channel: "#devops"
-      msg: "Repository of code for the build pipeline has been cloned and can be found here https://github.com/pmedilall/lab-insecurebank - *@DevSec team please analyse and conduct further tests on codebase"
+        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+        channel: "#devops"
+        msg: "Repository of code for the build pipeline has been cloned and can be found here https://github.com/pmedilall/lab-insecurebank - *@DevSec team please analyse and conduct further tests on codebase"
