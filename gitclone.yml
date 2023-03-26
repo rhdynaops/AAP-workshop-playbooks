@@ -1,0 +1,13 @@
+---
+- name: Clone GitHub repository
+  hosts: all
+  gather_facts: false
+
+  vars:
+    github_username: "pmedilall"
+    github_repository: "https://github.com/pmedilall/lab-insecurebank"
+
+  tasks:
+    - name: Clone the GitHub repository
+      become: false
+      shell: git clone https://github.com/{{ github_username }}/{{ github_repository }}.git
