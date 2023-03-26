@@ -12,6 +12,10 @@
     - name: Roll out latest deployment for easytravel-frontend
       command: oc rollout latest dc/easytravel-frontend -n easytravel
 
+    - name: Wait for 30 seconds
+      pause:
+        seconds: 30
+
     - name: Notify Slack channel
       slack:
        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
