@@ -5,7 +5,7 @@
 
   vars:
     github_username: "pmedilall"
-    github_repository: "https://github.com/pmedilall/lab-insecurebank"
+    github_repository: "lab-insecurebank"
 
   tasks:
     - name: Clone the GitHub repository
