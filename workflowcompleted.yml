@@ -22,8 +22,8 @@
        var: pods_output.stdout_lines
        
    - name: Wait for 35 seconds
-      pause:
-        seconds: 35      
+     pause:
+       seconds: 35      
 
    - name: Notify Slack channel
      slack:
