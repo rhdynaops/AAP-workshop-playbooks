@@ -20,4 +20,4 @@
       slack:
        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
        channel: "#devops"
-       msg: "*Updating Dyntrace to Block source and port of suspicious activity* IP Address 206.120.32.31 has been block on ports *.* Please create an incident and determine root cause"
+       msg: "*Blocking IP - IP Address 206.120.32.31 has been blocked to minimise impact* "
