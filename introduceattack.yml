@@ -8,8 +8,4 @@
     - name: Set environment variable for deployment config
       command: oc set env dc/easytravel-loadgen ET_BACKEND_URL=http://easytravel-www:8080 ET_PROBLEMS=LoginProblems -n easytravel
 
-    - name: Notify Slack channel
-      slack:
-       token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
-       channel: "#devops"
-       msg: "*P1 There is suspicious activity occuring on Web System with uncommon Spikes in traffic - Security Response has been notified*!"
+   
