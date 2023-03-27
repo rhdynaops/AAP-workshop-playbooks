@@ -25,4 +25,4 @@
      slack:
       token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
       channel: "#devops"
-      msg: "*A Dynatrace Security Event has been to sent to Ansible. Potential suspicious activity detected. Starting "Dynatrace and Ansible Security Event Workflow". Here is the URL for reference: "URL".*"
+      msg: "*A Dynatrace Security Event has been to sent to Ansible. Potential suspicious activity detected. Starting Dynatrace and Ansible Security Event Workflow. Here is the URL for reference: URL.*"
