@@ -11,6 +11,10 @@
     - name: Clone the GitHub repository
       become: false
       shell: git clone https://github.com/{{ github_username }}/{{ github_repository }}.git
+      
+    - name: Wait for 35 seconds
+      pause:
+       seconds: 35      
 
     - name: Notify Slack channel
       slack:
