@@ -23,7 +23,7 @@
        
    - name: Wait for 35 seconds
       pause:
-       seconds: 35      
+        seconds: 35      
 
    - name: Notify Slack channel
      slack:
