@@ -21,7 +21,7 @@
      debug:
        var: pods_output.stdout_lines
        
-    - name: Wait for 35 seconds
+   - name: Wait for 35 seconds
       pause:
        seconds: 35      
 
