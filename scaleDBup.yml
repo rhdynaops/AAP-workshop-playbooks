@@ -1,0 +1,7 @@
+---
+- name: Scale EasyTravel MongoDB deployment
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: Scale deployment
+      command: kubectl scale deployment easytravel-mongodb -n easytravel --replicas=1
