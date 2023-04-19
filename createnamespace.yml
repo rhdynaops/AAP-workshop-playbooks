@@ -1,0 +1,26 @@
+---
+- name: Update environment variables and roll out latest deployment on OpenShift
+  hosts: all
+  connection: ssh
+  tasks:
+    - name: Login to OpenShift cluster
+      command: oc login -u admin -p uLPBCR7y1RENYE0E https://api.cluster-rldkk.rldkk.sandbox2507.opentlc.com:6443
+      
+    - name: Create New Project
+      command: oc new-project easytravel-demo
+      
+    - name: Create ADM Policy (role)
+      command: oc adm policy add-role-to-user cluster-admin admin -n easytravel-demo
+      
+    - name: Create ADM Policy (add-user)
+      command: oc adm policy add-scc-to-user anyuid -z default -n easytrave-demo 
+  
+    - name: Wait for 30 seconds
+      pause:
+        seconds: 30
+
+    - name: Notify Slack channel
+      slack:
+       token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+       channel: "#devops"
+       msg: "*Namespace Successfully Created.....ADM Role Policy Successfully created....ADM Add-User policy Successfully created...* "
