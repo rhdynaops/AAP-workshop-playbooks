@@ -1,6 +1,7 @@
 ---
 - name: Scale EasyTravel MongoDB deployment Down
-  hosts: ssh
+  hosts: all
+  connection: ssh
   gather_facts: no
   tasks:
   
