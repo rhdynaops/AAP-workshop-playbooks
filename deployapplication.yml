@@ -7,7 +7,7 @@
       command: oc login -u admin -p uLPBCR7y1RENYE0E https://api.cluster-rldkk.rldkk.sandbox2507.opentlc.com:6443
       
     - name: Deploy App from Template
-      command: oc create -f /home/lab-user/test.yml
+      command: oc create -f /home/lab-user/test.yaml
       
     - name: Create Create App
       command: oc new-app dynademo
