@@ -11,7 +11,7 @@
   tasks:
   
    - name: Login to OpenShift cluster
-     command: oc login -u admin -p elelUx1T7XajD9EY https://api.cluster-qhbht.qhbht.sandbox39.opentlc.com:6443
+     command: oc login -u admin -p uLPBCR7y1RENYE0E  https://api.cluster-rldkk.rldkk.sandbox2507.opentlc.com:6443
    
    - name: Get pods
      command: oc get pods
@@ -20,9 +20,13 @@
    - name: Display pods output
      debug:
        var: pods_output.stdout_lines
+       
+   - name: Wait for 30 seconds
+      pause:
+        seconds: 30    
 
    - name: Notify Slack channel
      slack:
        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
        channel: "#devops"
-       msg: "Deployment complete!"
+       msg: "*Application Route Created and exposed*"
