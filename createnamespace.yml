@@ -9,6 +9,10 @@
     - name: Create New Project
       command: oc new-project easytravel-demo
       
+    - name: Wait for 50 seconds
+      pause:
+        seconds: 50  
+      
     - name: Create ADM Policy (role)
       command: oc adm policy add-role-to-user cluster-admin admin -n easytravel-demo
       
