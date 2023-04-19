@@ -1,6 +1,6 @@
 ---
 - name: Scale EasyTravel MongoDB deployment Up
-  hosts: localhost
+  hosts: ssh
   gather_facts: no
   tasks:
   
