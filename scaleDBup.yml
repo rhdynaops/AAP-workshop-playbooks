@@ -17,7 +17,7 @@
 
     - name: Notify Slack channel
       slack:
-      token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
-      channel: "#devops"
-      msg: "*Processing remediation Workflow. Please wait 5 minutes for the DB to come up*"  
+       token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+       channel: "#devops"
+       msg: "*Processing remediation Workflow. Please wait 5 minutes for the DB to come up*"  
       
