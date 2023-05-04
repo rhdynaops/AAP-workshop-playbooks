@@ -21,7 +21,7 @@
 
   
     - name: Notify Slack channel
-      slack:
+       slack:
        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
        channel: "#devops"
        msg: "*Blocking IP - IP Address 49.183.27.60 has been blocked to minimise impact* "
