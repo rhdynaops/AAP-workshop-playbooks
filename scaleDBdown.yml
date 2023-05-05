@@ -6,7 +6,7 @@
   tasks:
   
     - name: Login to OpenShift cluster
-      command: oc login -u admin -p uLPBCR7y1RENYE0E https://api.cluster-rldkk.rldkk.sandbox2507.opentlc.com:6443
+      command: oc login -u opentlc-mgr -p bLQGzhxJ1kUBH42O https://api.cluster-g7zl7.g7zl7.sandbox1851.opentlc.com:6443
      
     - name: Scale deployment
       command: oc scale deployment easytravel-mongodb -n easytravel --replicas=0
