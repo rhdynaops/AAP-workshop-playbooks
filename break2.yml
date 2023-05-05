@@ -4,6 +4,6 @@
   connection: ssh
   tasks:
     - name: Login to OpenShift cluster
-      command: oc login -u opentlc-mgr -p SlWBsd1OpQbvSJzS https://api.cluster-f4zmk.f4zmk.sandbox2653.opentlc.com:6443
+      command: oc login -u opentlc-mgr -p bLQGzhxJ1kUBH42O https://api.cluster-g7zl7.g7zl7.sandbox1851.opentlc.com:6443
     - name: Set environment variable for deployment config
       command: oc set env dc/easytravel-loadgen ET_PROBLEMS=LoginProblems -n easytravel
