@@ -1,0 +1,32 @@
+---
+- name: Get pods in OpenShift cluster
+  hosts: all
+  connection: ssh 
+  vars:
+    token: "{{ lookup('env', 'T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d ') }}"  # use environment variable for Slack API token
+    channel: "#devops"  # replace with the name of the Slack channel you want to send the message to
+    message: "Deployment complete"  # replace with the message you want to send
+  
+  
+  tasks:
+  
+   - name: Login to OpenShift cluster
+     command: oc login -u opentlc-mgr -p bLQGzhxJ1kUBH42O https://api.cluster-g7zl7.g7zl7.sandbox1851.opentlc.com:6443
+   
+   - name: Get pods
+     command: oc get pods
+     register: pods_output
+
+   - name: Display pods output
+     debug:
+       var: pods_output.stdout_lines
+       
+   - name: Wait for 35 seconds
+     pause:
+       seconds: 35    
+
+   - name: Notify Slack channel
+     slack:
+      token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+      channel: "#devops"
+      msg: "*Source address of attack has been Blacklisted and Block*. Here is the URL for reference: https://autoctl1.jqrz7.sandbox2369.opentlc.com/#/jobs/workflow/208/.*"
