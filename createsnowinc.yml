@@ -14,7 +14,7 @@
      command: rm -rf lab-insecurebank
   
    - name: Login to OpenShift cluster
-     command: oc login -u admin -p elelUx1T7XajD9EY https://api.cluster-qhbht.qhbht.sandbox39.opentlc.com:6443
+     command: oc login -u opentlc-mgr -p bLQGzhxJ1kUBH42O https://api.cluster-g7zl7.g7zl7.sandbox1851.opentlc.com:6443
    
    - name: Get pods
      command: oc get pods
