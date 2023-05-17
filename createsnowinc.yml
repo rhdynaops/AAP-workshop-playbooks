@@ -32,4 +32,4 @@
      slack:
        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
        channel: "#devops"
-       msg: "*SNOW INC create with inc no. https://service-now.com/incidents/inc3456322*"
+       msg: "*SNOW INC created - Please review Ticket "
