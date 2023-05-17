@@ -20,4 +20,4 @@
       slack:
         token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
         channel: "#devops"
-        msg: "*The repo has been forked where the exploit exsists. Please review and identify fix for the attack! Link to repo - https://source.control.internal/app-insecure*"
+        msg: "*The repo has been forked where the exploit exsists. Please review and identify fix for the vulnerability! Link to repo - https://source.control.internal/app-insecure*"
