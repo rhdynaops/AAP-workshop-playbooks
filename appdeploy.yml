@@ -28,7 +28,7 @@
       command: oc create -f /home/lab-user/easyTravel-OpenShift/templates/easytravel-deployment.yml
       
     - name: Create Create App
-      command: oc new-app easytravel
+      command: oc new-app dynatrace-easytravel
       
   
     - name: Wait for 30 seconds
