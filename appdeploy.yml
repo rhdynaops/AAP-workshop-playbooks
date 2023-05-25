@@ -25,7 +25,7 @@
       
       
     - name: Deploy App from Template
-      command: oc create -f /home/lab-user/esyTravel-OpenShift/templates/easytravel-deployment.yml
+      command: oc create -f /home/lab-user/easyTravel-OpenShift/templates/easytravel-deployment.yml
       
     - name: Create Create App
       command: oc new-app easytravel
