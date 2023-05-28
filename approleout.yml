@@ -9,13 +9,10 @@
     password:
     
     
-  tasks:
-    - name: Login into OPenShift   
-      openshift_auth:
-        host: "{{ host }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
-      register: openshift_auth
+    - name: Login to OCP Cluster
+      ansible.builtin.command:
+         cmd: oc login -u "{{ username }}" -p "{{ password }}" "{{ host }}"
+      become: true 
   
     - name: Display authentication status
       debug:
