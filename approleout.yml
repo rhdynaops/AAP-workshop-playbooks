@@ -10,7 +10,7 @@
     
     
   tasks:
-    - name: Login into OPenShift   
+- name: Login into OPenShift   
   k8s_auth:
     host: "{{ host }}"
     username: "{{ username }}"
