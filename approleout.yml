@@ -49,7 +49,7 @@
 - name: Create EasyTravel deployment
   ansible.builtin.command:
     cmd: oc create -f /home/lab-user/easyTravel-OpenShift/templates/easytravel-deployment.yml
-   become: true
+  become: true
 
        
 - name: Wait for 15 seconds
