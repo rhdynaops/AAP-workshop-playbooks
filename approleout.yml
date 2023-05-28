@@ -17,9 +17,9 @@
         password: "{{ password }}"
       register: openshift_auth
   
-- name: Display authentication status
-  debug:
-    var: openshift_auth 
+    - name: Display authentication status
+      debug:
+        var: openshift_auth 
 
       
 - name: Create a new project
