@@ -1,13 +1,8 @@
 ---
 - name: Update environment variables and roll out latest deployment on OpenShift
   hosts: all
-  gather_facts: false
   connection: ssh
-  vars:
-    host: "{{ host }}"
-    username: "{{ username }}"
-    password: "{{ password }}"
-    
+     
   tasks: 
     - name: Login to OCP Cluster
       command: oc login -u opentlc-mgr -p l0ZZ1fyFdthQJrEf https://api.cluster-rbhdz.rbhdz.sandbox185.opentlc.com:6443
