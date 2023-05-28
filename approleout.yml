@@ -4,14 +4,23 @@
   connection: ssh
   
   vars:
-    my_username: 
-    my_password:
-    my_url:
+    host:
+    username: 
+    password:
+    
     
   tasks:
+  k8s_auth:
+    host: {{ host }}
+    username: {{ username }}
+    password: {{ password }}
+  register: openshift_auth
   
-    - name: Login to OpenShift cluster
-      command: oc login -u {{ my_username }}  -p {{ my_password }}  {{ my_url }}
+- name: Display authentication status
+  debug:
+    var: openshift_auth 
+#    - name: Login to OpenShift cluster
+ #     command: oc login -u {{ my_username }}  -p {{ my_password }}  {{ my_url }}
 
       
     - name: Create a new project
