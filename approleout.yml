@@ -10,8 +10,7 @@
     
   tasks: 
     - name: Login to OCP Cluster
-      ansible.builtin.command:
-        cmd: oc login -u opentlc-mgr -p l0ZZ1fyFdthQJrEf https://api.cluster-rbhdz.rbhdz.sandbox185.opentlc.com:6443
+      command: oc login -u opentlc-mgr -p l0ZZ1fyFdthQJrEf https://api.cluster-rbhdz.rbhdz.sandbox185.opentlc.com:6443
       become: true 
          
     - name: Create a new project
