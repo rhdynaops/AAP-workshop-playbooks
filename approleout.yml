@@ -11,7 +11,7 @@
     
   tasks:
     - name: Login into OPenShift   
-      k8s_auth:
+      openshift_auth:
         host: "{{ host }}"
         username: "{{ username }}"
         password: "{{ password }}"
