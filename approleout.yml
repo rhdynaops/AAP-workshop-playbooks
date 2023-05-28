@@ -10,7 +10,7 @@
     
     
   tasks:
-  k8s_auth:
+  openshift_auth:
     host: "{{ host }}"
     username: "{{ username }}"
     password: "{{ password }}"
