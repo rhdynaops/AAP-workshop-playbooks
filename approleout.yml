@@ -11,9 +11,9 @@
     
   tasks:
   k8s_auth:
-    host: {{ host }}
-    username: {{ username }}
-    password: {{ password }}
+    host: "{{ host }}"
+    username: "{{ username }}"
+    password: "{{ password }}"
   register: openshift_auth
   
 - name: Display authentication status
