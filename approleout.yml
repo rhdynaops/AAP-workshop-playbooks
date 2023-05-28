@@ -8,7 +8,6 @@
 #      command: oc login -u opentlc-mgr -p bLQGzhxJ1kUBH42O  https://api.cluster-g7zl7.g7zl7.sandbox1851.opentlc.com:6443
 
     - name: Authenticate with OpenShift
-      openshift:
         api_url: 
         username: 
         password: 
