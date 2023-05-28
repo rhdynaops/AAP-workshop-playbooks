@@ -4,9 +4,9 @@
   gather_facts: false
   connection: ssh
   vars:
-    host:
-    username: 
-    password:
+    host: {{ host }}
+    username: {{ username }}
+    password: {{ password }}
     
     
     - name: Login to OCP Cluster
