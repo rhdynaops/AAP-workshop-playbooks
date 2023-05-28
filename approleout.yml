@@ -10,12 +10,12 @@
     
     
   tasks:
-- name: Login into OPenShift   
-  k8s_auth:
-    host: "{{ host }}"
-    username: "{{ username }}"
-    password: "{{ password }}"
-  register: openshift_auth
+    - name: Login into OPenShift   
+      k8s_auth:
+        host: "{{ host }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+      register: openshift_auth
   
 - name: Display authentication status
   debug:
