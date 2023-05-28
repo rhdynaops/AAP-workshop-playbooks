@@ -8,53 +8,53 @@
     username: {{ username }}
     password: {{ password }}
     
-   tasks: 
-     - name: Login to OCP Cluster
-       ansible.builtin.command:
-         cmd: oc login -u "{{ username }}" -p "{{ password }}" "{{ host }}"
-       become: true 
+  tasks: 
+    - name: Login to OCP Cluster
+      ansible.builtin.command:
+        cmd: oc login -u "{{ username }}" -p "{{ password }}" "{{ host }}"
+      become: true 
          
-     - name: Create a new project
-       command: oc new-project easytravel
-       become: true
+    - name: Create a new project
+      command: oc new-project easytravel
+      become: true
       
-     - name: Add cluster-admin role to a user
-       command: oc adm policy add-role-to-user cluster-admin opentlc-mgr -n easytravel
-       become: true
+    - name: Add cluster-admin role to a user
+      command: oc adm policy add-role-to-user cluster-admin opentlc-mgr -n easytravel
+      become: true
 
-     - name: Add anyuid SCC to the default service account
-       command: oc adm policy add-scc-to-user anyuid -z default -n easytravel
-       become: true
+    - name: Add anyuid SCC to the default service account
+      command: oc adm policy add-scc-to-user anyuid -z default -n easytravel
+      become: true
            
       
-     - name: Download Template
-       command: git clone  https://github.com/gvenkatx/easyTravel-OpenShift/
+    - name: Download Template
+      command: git clone  https://github.com/gvenkatx/easyTravel-OpenShift/
       
-     - name: Wait for 10 seconds
-       pause:
-         seconds: 10
+    - name: Wait for 10 seconds
+      pause:
+        seconds: 10
       
       
 #    - name: Deploy App from Template
  #     command: oc create -f /home/lab-user/easyTravel-OpenShift/templates/easytravel-deployment.yml
  
  
-     - name: Create EasyTravel deployment
-       ansible.builtin.command:
-         cmd: oc create -f /home/lab-user/easyTravel-OpenShift/templates/easytravel-deployment.yml
-       become: true
+    - name: Create EasyTravel deployment
+      ansible.builtin.command:
+        cmd: oc create -f /home/lab-user/easyTravel-OpenShift/templates/easytravel-deployment.yml
+      become: true
 
        
-     - name: Wait for 15 seconds
-       pause:
-         seconds: 15    
+    - name: Wait for 15 seconds
+      pause:
+        seconds: 15    
       
-     - name: Create Create App
-       command: oc new-app dynatrace-easytravel
+    - name: Create Create App
+      command: oc new-app dynatrace-easytravel
       
   
-     - name: Notify Slack channel
-       slack:
-        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
-        channel: "#devops"
-        msg: "*Application Successfully Deployed from template.....Application created Successsfully* "
+    - name: Notify Slack channel
+      slack:
+       token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+       channel: "#devops"
+       msg: "*Application Successfully Deployed from template.....Application created Successsfully* "
