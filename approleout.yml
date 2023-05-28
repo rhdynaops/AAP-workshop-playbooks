@@ -11,7 +11,7 @@
   tasks:
   
     - name: Login to OpenShift cluster
-      command: oc login -u {{my_username}}  -p {{my_password}}  {{my_url}}
+      command: oc login -u {{ my_username }}  -p {{ my_password }}  {{ my_url }}
 
       
     - name: Create a new project
