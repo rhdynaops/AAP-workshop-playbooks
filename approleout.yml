@@ -2,21 +2,16 @@
 - name: Update environment variables and roll out latest deployment on OpenShift
   hosts: all
   connection: ssh
+  
+  vars:
+    my_username: 
+    my_password:
+    my_url:
+    
   tasks:
   
-#    - name: Login to OpenShift cluster
-#      command: oc login -u opentlc-mgr -p bLQGzhxJ1kUBH42O  https://api.cluster-g7zl7.g7zl7.sandbox1851.opentlc.com:6443
-
-    - name: Authenticate with OpenShift
-      openshift:
-        api_url: 
-        username: 
-        password: 
-      register: openshift_auth
-
-    - name: Print authentication status
-      debug:
-        var: openshift_auth
+    - name: Login to OpenShift cluster
+      command: oc login -u {{my_username}}  -p {{my_password}}  {{my_url}}
 
       
     - name: Create a new project
