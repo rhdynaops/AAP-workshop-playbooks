@@ -38,8 +38,8 @@
   command: git clone  https://github.com/gvenkatx/easyTravel-OpenShift/
       
 - name: Wait for 10 seconds
-      pause:
-        seconds: 10
+     pause:
+       seconds: 10
       
       
 #    - name: Deploy App from Template
