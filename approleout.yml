@@ -11,7 +11,7 @@
       become: true
       
     - name: Debug Statement
-       debug: 
+      debug: 
          msg: "{{ url }}" 
          
     - name: Create a new project
