@@ -38,8 +38,8 @@
   command: git clone  https://github.com/gvenkatx/easyTravel-OpenShift/
       
 - name: Wait for 10 seconds
-     pause:
-       seconds: 10
+  pause:
+    seconds: 10
       
       
 #    - name: Deploy App from Template
@@ -53,8 +53,8 @@
 
        
  - name: Wait for 15 seconds
-      pause:
-        seconds: 15    
+   pause:
+     seconds: 15    
       
  - name: Create Create App
    command: oc new-app dynatrace-easytravel
