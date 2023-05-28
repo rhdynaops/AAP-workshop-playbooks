@@ -23,9 +23,9 @@
  #     command: oc login -u {{ my_username }}  -p {{ my_password }}  {{ my_url }}
 
       
-    - name: Create a new project
-      command: oc new-project easytravel
-      become: true
+#    - name: Create a new project
+ #     command: oc new-project easytravel
+  #    become: true
       
     - name: Add cluster-admin role to a user
       command: oc adm policy add-role-to-user cluster-admin opentlc-mgr -n easytravel
