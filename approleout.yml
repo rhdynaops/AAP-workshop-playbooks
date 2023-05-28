@@ -2,11 +2,17 @@
 - name: Update environment variables and roll out latest deployment on OpenShift
   hosts: all
   connection: ssh
+  vars:
+    url: 
      
   tasks: 
     - name: Login to OCP Cluster
-      command: oc login -u opentlc-mgr -p l0ZZ1fyFdthQJrEf https://api.cluster-rbhdz.rbhdz.sandbox185.opentlc.com:6443
-      become: true 
+      command: oc login -u opentlc-mgr -p l0ZZ1fyFdthQJrEf {{ url }}
+      become: true
+      
+    - name: Debug Statement
+       debug: 
+         msg: "{{ url }}" 
          
     - name: Create a new project
       command: oc new-project easytravel
