@@ -46,22 +46,22 @@
  #     command: oc create -f /home/lab-user/easyTravel-OpenShift/templates/easytravel-deployment.yml
  
  
- - name: Create EasyTravel deployment
-      ansible.builtin.command:
-        cmd: oc create -f /home/lab-user/easyTravel-OpenShift/templates/easytravel-deployment.yml
-      become: true
+- name: Create EasyTravel deployment
+  ansible.builtin.command:
+    cmd: oc create -f /home/lab-user/easyTravel-OpenShift/templates/easytravel-deployment.yml
+   become: true
 
        
- - name: Wait for 15 seconds
-   pause:
-     seconds: 15    
+- name: Wait for 15 seconds
+  pause:
+    seconds: 15    
       
- - name: Create Create App
-   command: oc new-app dynatrace-easytravel
+- name: Create Create App
+  command: oc new-app dynatrace-easytravel
       
   
- - name: Notify Slack channel
-      slack:
-       token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
-       channel: "#devops"
-       msg: "*Application Successfully Deployed from template.....Application created Successsfully* "
+- name: Notify Slack channel
+  slack:
+   token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+   channel: "#devops"
+   msg: "*Application Successfully Deployed from template.....Application created Successsfully* "
