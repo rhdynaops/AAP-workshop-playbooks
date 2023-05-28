@@ -1,8 +1,8 @@
 ---
 - name: Update environment variables and roll out latest deployment on OpenShift
   hosts: all
+  gather_facts: false
   connection: ssh
-  
   vars:
     host:
     username: 
@@ -13,12 +13,7 @@
       ansible.builtin.command:
          cmd: oc login -u "{{ username }}" -p "{{ password }}" "{{ host }}"
       become: true 
-  
-    - name: Display authentication status
-      debug:
-        var: openshift_auth 
-
-      
+         
     - name: Create a new project
       command: oc new-project easytravel
       become: true
