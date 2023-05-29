@@ -12,7 +12,7 @@
       command: oc scale deployment easytravel-mongodb -n easytravel --replicas=1
       
  #   - name: Wait for 30 seconds
-      pause:
+ #     pause:
  #       seconds: 30    
 
     - name: Notify Slack channel
