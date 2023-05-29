@@ -19,7 +19,7 @@
       become: true
       
     - name: Add cluster-admin role to a user
-      command: oc adm policy add-role-to-user cluster-admin opentlc-mgr -n easytravel
+      command: oc adm policy add-role-to-user cluster-admin admin -n easytravel
       become: true
 
     - name: Add anyuid SCC to the default service account
