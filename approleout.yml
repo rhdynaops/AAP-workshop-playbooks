@@ -50,8 +50,9 @@
         seconds: 15    
       
     - name: Create Create App
-      command: oc new-app dynatrace-easytravel
-      
+      ansible.builtin.command:
+        cmd: oc new-app dynatrace-easytravel
+      become: true   
   
     - name: Notify Slack channel
       slack:
