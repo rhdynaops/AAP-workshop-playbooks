@@ -11,7 +11,7 @@
   tasks:
   
    - name: Login to OpenShift cluster
-     command: oc login -u admin -p uLPBCR7y1RENYE0E  https://api.cluster-rldkk.rldkk.sandbox2507.opentlc.com:6443
+     command: oc login -u opentlc-mgr -p l0ZZ1fyFdthQJrEf  https://api.cluster-rbhdz.rbhdz.sandbox185.opentlc.com:6443
    
    - name: Get pods
      command: oc get pods
