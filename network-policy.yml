@@ -1,0 +1,43 @@
+---
+- name: Create and Apply Network Policy to Block All Traffic in and out of a Pod
+  hosts: all
+  connection: ssh
+  
+  tasks:
+    - name: Login to OpenShift cluster
+      command: oc login -u opentlc-mgr -p ul0ZZ1fyFdthQJrEf https://api.cluster-rbhdz.rbhdz.sandbox185.opentlc.com:6443
+      
+  tasks:
+    - name: Create Network Policy Definition
+      blockinfile:
+        path: network-policy.yaml
+        block: |
+          apiVersion: networking.k8s.io/v1
+          kind: NetworkPolicy
+          metadata:
+            name: block-all-traffic-policy
+          spec:
+            podSelector:
+              matchLabels:
+                app: log4shell-app
+            policyTypes:
+              - Ingress
+              - Egress
+            ingress:
+              - {}
+            egress:
+              - {}
+
+
+    - name: Apply Network Policy
+      shell: oc apply -f network-policy.yaml
+      args:
+        executable: /bin/bash
+
+
+
+ - name: Notify Slack channel
+      slack:
+       token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+       channel: "#devops"
+       msg: "*OpenShift Network POicy applied to mitigate risk. Both Ingress and Egress traffic have been disable. Log4shell POD is now isloated*"
