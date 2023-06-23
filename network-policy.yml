@@ -7,7 +7,6 @@
     - name: Login to OpenShift cluster
       command: oc login -u opentlc-mgr -p ul0ZZ1fyFdthQJrEf https://api.cluster-rbhdz.rbhdz.sandbox185.opentlc.com:6443
       
-  tasks:
     - name: Create Network Policy Definition
       blockinfile:
         path: network-policy.yaml
