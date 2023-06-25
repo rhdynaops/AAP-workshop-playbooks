@@ -5,7 +5,7 @@
   
   tasks:
     - name: Login to OpenShift cluster
-      command: oc login -u opentlc-mgr -p l0ZZ1fyFdthQJrEf https://api.cluster-rbhdz.rbhdz.sandbox185.opentlc.com:6443
+      command: oc login -u admin -p openshift https://api.cluster-wqmm8.wqmm8.sandbox1798.opentlc.com:6443
       
     - name: Create Network Policy Definition
       blockinfile:
