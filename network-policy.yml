@@ -24,9 +24,9 @@
               - Ingress
               - Egress
             ingress:
-              - []
+              - {}
             egress:
-              - []
+              - {}
 
 
     - name: Apply Network Policy
