@@ -19,7 +19,7 @@
           spec:
             podSelector:
               matchLabels:
-                app: log4shell-app-85d4b6774f-24brf
+                app: log4shell-app
             policyTypes:
               - Ingress
               - Egress
