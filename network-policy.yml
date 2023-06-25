@@ -17,16 +17,16 @@
             name: block-all-traffic-policy
             namespace: devops
           spec:
-            podSelector:
+            podSelector: {}
               matchLabels:
                 app: log4shell-app
             policyTypes:
               - Ingress
               - Egress
             ingress:
-              - {}
+              - []
             egress:
-              - {}
+              - []
 
 
     - name: Apply Network Policy
