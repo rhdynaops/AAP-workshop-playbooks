@@ -23,10 +23,7 @@
             policyTypes:
               - Ingress
               - Egress
-            ingress:
-              - {}
-            egress:
-              - {}
+          status: {}
 
 
     - name: Apply Network Policy
