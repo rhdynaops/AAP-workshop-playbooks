@@ -5,15 +5,15 @@
   gather_facts: no
   tasks:
   
-    - name: Login to OpenShift cluster
-      command: oc login -u opentlc-mgr -p bLQGzhxJ1kUBH42O https://api.cluster-g7zl7.g7zl7.sandbox1851.opentlc.com:6443
+#    - name: Login to OpenShift cluster
+#      command: oc login -u opentlc-mgr -p bLQGzhxJ1kUBH42O 
      
     - name: Scale deployment
       command: oc scale deployment easytravel-mongodb -n easytravel --replicas=1
       
-    - name: Wait for 30 seconds
-      pause:
-        seconds: 30    
+ #   - name: Wait for 30 seconds
+ #     pause:
+ #       seconds: 30    
 
     - name: Notify Slack channel
       slack:
