@@ -1,0 +1,32 @@
+---
+- name: Get pods in OpenShift cluster
+  hosts: all
+  connection: ssh 
+  vars:
+    token: "{{ lookup('env', 'T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d ') }}"  # use environment variable for Slack API token
+    channel: "#devops"  # replace with the name of the Slack channel you want to send the message to
+    message: "Deployment complete"  # replace with the message you want to send
+  
+  
+  tasks:
+  
+   - name: Login to OpenShift cluster
+     command: oc login -u admin -p openshift  https://api.cluster-56lb5.56lb5.sandbox419.opentlc.com:6443
+   
+   - name: Get pods
+     command: oc get pods
+     register: pods_output
+
+   - name: Display pods output
+     debug:
+       var: pods_output.stdout_lines
+       
+   - name: Wait for 30 seconds
+     pause:
+       seconds: 30    
+
+   - name: Notify Slack channel
+     slack:
+       token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+       channel: "#devops"
+       msg: "*SNOW ticket and Change Request Raised*"
