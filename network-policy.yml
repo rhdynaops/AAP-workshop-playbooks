@@ -37,4 +37,4 @@
       slack:
        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
        channel: "#devops"
-       msg: "*OpenShift Network POicy applied to mitigate risk. Both Ingress and Egress traffic have been disable. Log4shell POD is now isloated*"
+       msg: "*OpenShift Network Policy applied to mitigate risk. Both Ingress and Egress traffic have been disabled. Log4shell POD is now isloated*"
