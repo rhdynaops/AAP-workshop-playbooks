@@ -30,5 +30,5 @@
      slack:
        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
        channel: "#devops"
-       msg: "*Change request in SNOW raised to Isolate exploited POD*"
+       msg: "*Change request in SNOW raised to Isolate exploited POD - Approval workflow starting*"
   
