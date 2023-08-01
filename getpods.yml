@@ -29,4 +29,4 @@
      slack:
        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
        channel: "#devops"
-       msg: "*DevSecOps Team has been notifed and SNOW ticket severity updated accordingly*"
+       msg: "*DevSecOps Team has been notifed and SNOW ticket has been created with severity updated accordingly*"
