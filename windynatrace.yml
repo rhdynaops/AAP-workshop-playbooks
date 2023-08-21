@@ -1,0 +1,38 @@
+---
+- name: Deploy Dynatrace agent on Windows
+  hosts: all
+  connection: ssh
+
+  tasks:
+    - name: Download Dynatrace Agent installer
+      win_get_url:
+        url: "https://jfd50155.live.dynatrace.com/api/v1/deployment/installer/agent/windows/default/latest?arch=x86&flavor=default' -Headers @{ 'Authorization' = 'Api-Token dt0c01.7GB7BT6AHY7MCIBWF2WOP6S5.ODXIQGFJXUAEZGYLSQMDVC3GYGSZF7VPSR5YBY67W3W35MVKOBZK7MMLDKW2AOVY'"
+        dest: C:\Temp\DynatraceInstaller.ps1
+      register: download_result
+      ignore_errors: yes
+
+    - name: Run Dynatrace Agent installer
+      win_command: powershell.exe -ExecutionPolicy Bypass -File C:\Temp\DynatraceInstaller.ps1 --set-app-log-content-access=true --set-instrumentation=true --set-instrumentation-timeout=120 --set-host-tags=environment:production
+      when: download_result|success
+
+    - name: Check Dynatrace Agent status
+      win_shell: Get-Service -Name "OneAgent" -ErrorAction SilentlyContinue
+      register: agent_status
+
+    - name: Restart Dynatrace Agent service if not running
+      win_service:
+        name: "OneAgent"
+        state: started
+      when: agent_status.rc != 0
+
+    - name: Clean up installer script
+      win_file:
+        path: C:\Temp\DynatraceInstaller.ps1
+        state: absent
+
+
+    - name: Notify Slack channel
+      slack:
+       token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+       channel: "#devops"
+       msg: "*Successfully deployed Dynatrace Agent to Windows*"
