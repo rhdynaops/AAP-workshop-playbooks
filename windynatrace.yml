@@ -1,7 +1,8 @@
 ---
 - name: Deploy Dynatrace agent on Windows
   hosts: all
-  connection: ssh
+  ansible_connection: ssh
+  ansible_shell_type: cmd
 
   tasks:
     - name: Download Dynatrace Agent installer
