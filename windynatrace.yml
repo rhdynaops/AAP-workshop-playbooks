@@ -2,6 +2,7 @@
 - name: Deploy Dynatrace agent on Windows
   hosts: all
   connection: ssh
+  gather_facts: false
  
 
     - name: Run Dynatrace Agent installer
