@@ -9,7 +9,7 @@
       
     - name: Create Network Policy Definition
       blockinfile:
-        path: /home/ec2-user/network-policy.yaml
+        path: network-policy.yaml
         block: |
           apiVersion: networking.k8s.io/v1
           kind: NetworkPolicy
