@@ -30,5 +30,5 @@
        msg: "*Workflow: Ansible and Dynatrace Security Event Workflow has been completed*
 
        
-            Link to the Ansible workflow: https://autoctl1.2vgn7.sandbox2003.opentlc.com/#/jobs/workflow/{{ awx_workflow_job_id }}/output" 
+            Link to the Ansible workflow: "https://autoctl1.2vgn7.sandbox2003.opentlc.com/#/jobs/workflow/28"
 
