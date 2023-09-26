@@ -27,7 +27,7 @@
      slack:
        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
        channel: "#devops"
-       msg: *Workflow: Ansible and Dynatrace Security Event Workflow has been completed*
+       msg: "*Workflow: Ansible and Dynatrace Security Event Workflow has been completed*"
 
        
            
