@@ -26,4 +26,4 @@
      slack:
        token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
        channel: "#devops"
-       msg: "*Change Request has been raised to migtigate risk and stop suspicious activity. Approval required - https://aap123-aap.apps.cluster-xjp9c.xjp9c.sandbox1854.opentlc.com/#/workflow_approvals*"
+       msg: "*Change Request has been raised to migtigate risk and stop suspicious activity* *Approval required* - https://aap123-aap.apps.cluster-xjp9c.xjp9c.sandbox1854.opentlc.com/#/workflow_approvals"
