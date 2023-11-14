@@ -5,7 +5,7 @@
   gather_facts: no
   tasks:
   
-   - name: Login to OpenShift cluster
+    - name: Login to OpenShift cluster
       command: oc login -u admin -p openshift 
      
     - name: Scale deployment
