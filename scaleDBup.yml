@@ -5,8 +5,8 @@
   gather_facts: no
   tasks:
   
-#    - name: Login to OpenShift cluster
-#      command: oc login -u opentlc-mgr -p bLQGzhxJ1kUBH42O 
+   - name: Login to OpenShift cluster
+      command: oc login -u admin -p openshift 
      
     - name: Scale deployment
       command: oc scale deployment easytravel-mongodb -n easytravel --replicas=1
