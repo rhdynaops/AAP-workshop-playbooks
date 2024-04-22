@@ -54,8 +54,8 @@
         cmd: oc new-app dynatrace-easytravel
       become: true   
   
-    - name: Notify Slack channel
-      slack:
-       token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
-       channel: "#devops"
-       msg: "*Application Successfully Deployed from template.....Application created Successsfully* "
+#    - name: Notify Slack channel
+#      slack:
+ #      token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+ #      channel: "#devops"
+ #      msg: "*Application Successfully Deployed from template.....Application created Successsfully* "
