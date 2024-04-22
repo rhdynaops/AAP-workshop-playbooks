@@ -6,7 +6,7 @@
   tasks:
   
     - name: Login to OpenShift cluster
-      command: oc login -u admin -p openshift 
+      command: oc login -u admin -p ZnG5vE6mvGc0uk4M 
      
     - name: Scale deployment
       command: oc scale deployment easytravel-mongodb -n easytravel --replicas=1
@@ -15,9 +15,9 @@
  #     pause:
  #       seconds: 30    
 
-    - name: Notify Slack channel
-      slack:
-       token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
-       channel: "#devops"
-       msg: "*Processing remediation Workflow. Please wait 5 minutes for the DB to come up*"  
+#    - name: Notify Slack channel
+#      slack:
+ #      token: "T0508SWKB2N/B04V8C4P6A3/fr3b7rtyxJrZgjuRqQ1UCT1d"
+ #      channel: "#devops"
+  #     msg: "*Processing remediation Workflow. Please wait 5 minutes for the DB to come up*"  
       
