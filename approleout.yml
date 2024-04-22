@@ -7,7 +7,7 @@
      
   tasks: 
     - name: Login to OCP Cluster
-      command: oc login -u admin -p ZnG5vE6mvGc0uk4M {{ url }}
+      command: oc login -u admin -p openshift {{ url }}
       become: true
       
     - name: Debug Statement
