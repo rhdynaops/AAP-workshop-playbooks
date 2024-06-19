@@ -7,7 +7,7 @@
      
   tasks: 
     - name: Login to OCP Cluster
-      command: oc login -u admin -p openshift {{ url }}
+      command: oc login -u kubeadmin -p MoZCg-p9paf-ahrNo-Mee4E {{ url }}
       become: true
       
     - name: Debug Statement
