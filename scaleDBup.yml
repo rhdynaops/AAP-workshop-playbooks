@@ -6,7 +6,7 @@
   tasks:
   
     - name: Login to OpenShift cluster
-      command: oc login -u admin -p openshift 
+      command: oc login -u kubeadmin -p MoZCg-p9paf-ahrNo-Mee4E
      
     - name: Scale deployment
       command: oc scale deployment easytravel-mongodb -n easytravel --replicas=1
